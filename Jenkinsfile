@@ -19,6 +19,14 @@ pipeline {
             steps {
                 echo 'NUUUF'
             }
+            post {
+                always {
+                    echo 'esto siempre se ejecuta después del stage test'
+                }
+                failure {
+                    echo 'esto sale siempre que falla el stage test'
+                }
+            }
         }
     }
 }
