@@ -13,6 +13,7 @@ pipeline {
                 failure {
                     echo 'esto sale siempre que falla el stage inicio'
                 }
+
             }
         }
         stage('Test') {
@@ -20,11 +21,15 @@ pipeline {
                 echo 'NUUUF'
             }
             post {
-                always {
+                always(dir) {
                     echo 'esto siempre se ejecuta después del stage test'
+                    cleanWS
                 }
                 failure {
                     echo 'esto sale siempre que falla el stage test'
+                }
+                success {
+                    echo 'El stage test ha salido OK'
                 }
             }
         }
