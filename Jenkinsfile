@@ -1,4 +1,4 @@
-def var = pipeline {
+pipeline {
     agent any
     stages {
         stage('Inicio') {
