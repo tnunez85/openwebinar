@@ -9,6 +9,7 @@ pipeline {
             post {
                 always {
                     echo 'esto siempre se ejecuta después del stage inicio'
+                    sh 'apt-get update'
                 }
                 failure {
                     echo 'esto sale siempre que falla el stage inicio'
