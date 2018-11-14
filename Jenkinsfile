@@ -29,7 +29,7 @@ pipeline {
             post {
                 always(dir) {
                     echo 'Cleaning del Workspace después del stage test'
-                    echo 'cleanWS(dir)'
+                    cleanWS(dir)
                 }
                 failure {
                     echo 'esto sale siempre que falla el stage test'
