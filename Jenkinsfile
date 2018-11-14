@@ -5,25 +5,17 @@ pipeline {
             steps {
                 echo 'Hello World!!'
                 echo 'Running ${env.BUILD_ID} on ${env.JENKINS_URL}'
-                echo 'GIT_COMMIT % GIT_COMMIT %'
-                echo 'GIT_BRANCH % GIT_BRANCH %'
-                echo 'GIT_LOCAL_BRANCH % GIT_LOCAL_BRANCH %'
-                echo 'GIT_PREVIOUS_COMMIT % GIT_PREVIOUS_COMMIT %'
-                echo 'GIT_PREVIOUS_SUCCESSFUL_COMMIT % GIT_PREVIOUS_SUCCESSFUL_COMMIT %'
-                echo 'GIT_URL % GIT_URL %'
-                echo 'GIT_URL_N - % GIT_URL_N %'
-                echo 'GIT_AUTHOR_NAME % GIT_AUTHOR_NAME %'
-                echo 'GIT_COMMITTER_EMAIL % GIT_COMMITTER_EMAIL %'
-                sh 'sudo apt-get update | exit 99'
+
+                sh 'sudo apt-get update || exit 99'
 
 
             }
             post {
                 always {
-                    echo 'El step ${step} ha sido ejecutado'
+                    echo 'El step Inicio ha sido ejecutado'
                 }
                 failure {
-                    echo 'El step ${step} ha fallado con error ${status}'
+                    echo 'El step Inicio ha fallado con error %errorlevel%'
                 }
 
             }
