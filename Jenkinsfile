@@ -34,7 +34,7 @@ pipeline {
             post {
                 always(dir) {
                     echo 'esto siempre se ejecuta después del stage test'
-                    cleanWS
+                    @cleanWS
                 }
                 failure {
                     echo 'esto sale siempre que falla el stage test'
