@@ -6,7 +6,7 @@ pipeline {
                 echo 'Hello World!!'
                 echo 'Running ${env.BUILD_ID} on ${env.JENKINS_URL}'
 
-                sh 'apt-get update'
+                sh 'ls -lrt /'
 
 
             }
@@ -15,7 +15,7 @@ pipeline {
                     echo 'El step Inicio ha sido ejecutado'
                 }
                 failure {
-                    echo 'El step Inicio ha fallado con error %errorlevel%'
+                    echo 'El step Inicio ha fallado'
                 }
 
             }
