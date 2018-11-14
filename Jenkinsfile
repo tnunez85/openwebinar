@@ -1,7 +1,11 @@
 pipeline {
     agent any
+    environment {
+
+    }
     stages {
         stage('Inicio') {
+
             steps {
                 echo 'Hello World!!'
                 echo 'Running ${env.BUILD_ID} on ${env.JENKINS_URL}'
@@ -27,7 +31,7 @@ pipeline {
             post {
                 always(dir) {
                     echo 'Cleaning del Workspace después del stage test'
-                    cleanWS()
+                    //cleanWS(dir)
                 }
                 failure {
                     echo 'esto sale siempre que falla el stage test'
