@@ -1,3 +1,7 @@
+import jenkins.model.*
+
+
+
 pipeline {
     agent any
 
@@ -32,7 +36,7 @@ pipeline {
                     cleanWS(dir)
                 }
                 failure {
-                    echo 'esto sale siempre que falla el stage test'
+                    echo 'Esto sale siempre que falla el stage test'
                 }
                 success {
                     echo 'El stage test ha salido OK'
