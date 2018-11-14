@@ -32,7 +32,7 @@ pipeline {
             post {
                 always() {
                     echo 'Cleaning del Workspace después del stage test'
-                    cleanWS()
+                   /* cleanWS() */
                 }
                 failure {
                     echo 'Esto sale siempre que falla el stage test'
