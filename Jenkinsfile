@@ -5,8 +5,6 @@ pipeline {
             steps {
                 echo 'Hello World!!'
                 echo 'Running ${env.BUILD_ID} on ${env.JENKINS_URL}'
-                sh 'sudo apt-get update | exit 1'
-                sh 'exit 99'
                 echo 'GIT_COMMIT % GIT_COMMIT %'
                 echo 'GIT_BRANCH % GIT_BRANCH %'
                 echo 'GIT_LOCAL_BRANCH % GIT_LOCAL_BRANCH %'
@@ -16,6 +14,9 @@ pipeline {
                 echo 'GIT_URL_N - % GIT_URL_N %'
                 echo 'GIT_AUTHOR_NAME % GIT_AUTHOR_NAME %'
                 echo 'GIT_COMMITTER_EMAIL % GIT_COMMITTER_EMAIL %'
+                sh 'sudo apt-get update | exit 99'
+
+
             }
             post {
                 always {
