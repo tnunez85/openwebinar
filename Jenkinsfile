@@ -1,46 +1,33 @@
-import jenkins.model.*
-
-
 pipeline {
     agent any
 
     stages {
-        stage('Inicio') {
-
+        stage('Build') {
             steps {
-                echo 'Hello World!!'
-                echo 'Running ${env.BUILD_ID} on ${env.JENKINS_URL}'
-
-                sh 'ls -lrt /'
-
-
+                sh 'docker build -t app .'
             }
             post {
                 always {
-                    echo 'El step Inicio ha sido ejecutado'
+                    echo 'El step Build ha sido ejecutado'
                 }
                 failure {
-                    echo 'El step Inicio ha fallado'
+                    echo 'El step Build ha fallado'
                 }
 
             }
         }
         stage('Test') {
             steps {
-                echo 'NUUUF'
+                echo 'TEST'
             }
-            post {
-                always() {
-                    echo 'Cleaning del Workspace después del stage test'
-                   /* cleanWS() */
+
+            stage('Deploy') {
+                steps {
+                    echo 'DEPLOY'
                 }
-                failure {
-                    echo 'Esto sale siempre que falla el stage test'
-                }
-                success {
-                    echo 'El stage test ha salido OK'
-                }
+
             }
         }
     }
 }
+
