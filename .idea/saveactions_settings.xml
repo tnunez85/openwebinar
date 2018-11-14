@@ -7,6 +7,7 @@
         <option value="activateOnShortcut" />
         <option value="reformat" />
         <option value="reformatChangedCode" />
+        <option value="compile" />
       </set>
     </option>
     <option name="configurationPath" value="" />
