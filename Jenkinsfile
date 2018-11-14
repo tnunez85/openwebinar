@@ -1,7 +1,6 @@
 import jenkins.model.*
 
 
-
 pipeline {
     agent any
 
@@ -31,9 +30,9 @@ pipeline {
                 echo 'NUUUF'
             }
             post {
-                always(dir) {
+                always() {
                     echo 'Cleaning del Workspace después del stage test'
-                    cleanWS(dir)
+                    cleanWS()
                 }
                 failure {
                     echo 'Esto sale siempre que falla el stage test'
