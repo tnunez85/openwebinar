@@ -4,13 +4,14 @@ pipeline {
         stage('Inicio') {
             steps {
                 echo 'Hello World!!'
-                echo 'Test from IntelliJ'
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                sh 'sudo apt-get update | exit 1'
+                sh 'exit 99'
             }
             post {
                 always {
                     echo 'esto siempre se ejecuta después del stage inicio'
-                    sh 'sudo apt-get update'
-                    sh 'exit 99'
+
                 }
                 failure {
                     echo 'esto sale siempre que falla el stage inicio'
