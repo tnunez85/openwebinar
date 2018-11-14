@@ -6,7 +6,7 @@ pipeline {
                 echo 'Hello World!!'
                 echo 'Running ${env.BUILD_ID} on ${env.JENKINS_URL}'
 
-                sh 'sudo -n apt-get update'
+                sh 'apt-get update'
 
 
             }
