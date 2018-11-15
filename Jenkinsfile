@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Building docker'
                 sh 'whoami'
-                sh 'docker build -t app .'
+                sh 'sudo docker build -t app .'
                 echo 'test'
             }
             post {
