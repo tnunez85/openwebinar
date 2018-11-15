@@ -6,6 +6,7 @@ pipeline {
             steps {
                 echo 'Building docker'
                 sh 'docker build -t app .'
+                echo 'test'
             }
             post {
                 always {
