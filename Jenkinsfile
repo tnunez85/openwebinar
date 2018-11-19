@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'TEST'
+                echo 'Test submitted'
                 sh 'sudo docker run --rm --name app -id -p 80:80 app:test'
                 sh '/bin/nc -vz localhost 80'
             }
