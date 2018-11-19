@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Building docker'
                 sh 'whoami'
-                sh 'sudo docker build -t app .'
+                sh 'sudo docker build -t app:test .'
                 echo 'test'
             }
             post {
@@ -22,15 +22,20 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'TEST'
-                sh '/bin/nc -vz localhost 22'
-                sh '/bin/nc -vz localhost 8080'
+                sh 'sudo docker run --rm --name app -id -p 80:80 app:test'
+                sh '/bin/nc -vz localhost 80'
+            }
+            post{
+                always{
+                    sh 'docker container stop app'
+                }
             }
         }
         stage('Push Registry') {
             steps {
                 echo 'DEPLOY'
-                sh 'docker tag app:test app:stable'
-                sh 'docker push app:test app:stable'
+                sh 'docker tag app:test tnunez85/app:stable'
+                sh 'docker push tnunez85/app:stable'
             }
 
         }
