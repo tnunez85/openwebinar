@@ -24,6 +24,7 @@ pipeline {
                 echo 'Test submitted'
                 sh 'sudo docker run --rm --name app -id -p 80:80 app:test'
                 sh '/bin/nc -vz localhost 80'
+                sh 'sudo docker stop app'
             }
             post{
                 always{
@@ -33,9 +34,10 @@ pipeline {
         }
         stage('Push Registry') {
             steps {
-                echo 'DEPLOY'
-                sh 'docker tag app:test tnunez85/app:stable'
-                sh 'docker push tnunez85/app:stable'
+                echo 'Pushing changes in DockerHub'
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'password', usernameVariable: 'user')])
+                sh 'docker tag app:test tnunez/app:stable'
+                sh 'docker push tnunez/app:stable'
             }
 
         }
