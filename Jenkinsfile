@@ -24,8 +24,7 @@ pipeline {
                 echo 'Test submitted'
                 sh 'sudo docker run --rm --name app -id -p 80:80 app:test'
                 sh '/bin/nc -vz localhost 80'
-                sh 'sudo docker stop app'
-            }
+                            }
             post{
                 always{
                     sh 'docker container stop app'
