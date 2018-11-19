@@ -22,11 +22,15 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'TEST'
+                sh '/bin/nc -vz localhost 22'
+                sh '/bin/nc -vz localhost 86'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'DEPLOY'
+                sh 'docker tag app:test app:stable'
+                sh 'docker push app:test app:stable'
             }
 
         }
