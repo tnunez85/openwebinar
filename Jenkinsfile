@@ -11,7 +11,7 @@ pipeline {
             }
             post {
                 always {
-                    echo 'El step Build ha sido ejecutado'
+                    echo 'El step Build ha sido ejecutado.'
                 }
                 failure {
                     echo 'El step Build ha fallado'
